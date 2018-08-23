@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../core/user.service';
 import { AuthService } from '../core/auth.service';
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FirebaseUserModel } from '../core/user.model';
@@ -15,12 +15,14 @@ export class UserComponent implements OnInit{
 
   user: FirebaseUserModel = new FirebaseUserModel();
   profileForm: FormGroup;
+  currentUser: any;
 
   constructor(
     public userService: UserService,
     public authService: AuthService,
     private route: ActivatedRoute,
     private location : Location,
+    private router: Router,
     private fb: FormBuilder
   ) {
 
@@ -31,9 +33,16 @@ export class UserComponent implements OnInit{
       let data = routeData['data'];
       if (data) {
         this.user = data;
+        if(this.user.name === "Colt"){
+          this.user.image = "https://firebasestorage.googleapis.com/v0/b/reviews-7780d.appspot.com/o/IMG_6066.jpg?alt=media&token=da46cb1b-0eb6-4e82-ac2c-6921fa794faa";
+        } else if(this.user.name === "Carole") {
+          this.user.image = "";
+        }
         this.createForm(this.user.name);
       }
-    })
+    });
+    this.currentUser = this.userService.getCurrentUser();
+    console.log(this.currentUser);
   }
 
   createForm(name) {
@@ -47,6 +56,10 @@ export class UserComponent implements OnInit{
     .then(res => {
       console.log(res);
     }, err => console.log(err))
+  }
+
+  goToNewPost() {
+    this.router.navigate(['/post']);
   }
 
   logout(){

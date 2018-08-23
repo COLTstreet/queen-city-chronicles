@@ -1,0 +1,119 @@
+<div class="post-container">
+  <div class="container">
+    <header class="blog-header py-3">
+      <div class="row flex-nowrap justify-content-between align-items-center">
+        <div class="col-4 d-flex justify-content-start align-items-center">
+          <div class="dropdown">
+            <a id="dLabel" class="btn btn-sm btn-light" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fas fa-bars fa-2x"></i>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="dLabel">
+              <a class="dropdown-item" href="/about">About</a>
+              <a class="dropdown-item" href="/person/Carole">Carole</a>
+              <a class="dropdown-item" href="/person/Colt">Colt</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-4 text-center">
+          <a href="/home">
+            <img src="assets/CCQC-logo.png" class="ccqc-logo">
+          </a>
+        </div>
+        <div class="col-4 d-flex justify-content-end align-items-center">
+          <!-- <a class="btn btn-sm btn-outline-secondary" href="/login">Login</a> -->
+        </div>
+      </div>
+    </header>
+  </div>
+</div>
+<div *ngFor="let post of postCollectionList | async">
+  <div class="jumbotron p-3 p-md-5 text-white rounded no-padding post-hero" [ngStyle]="{
+      'background-image': 'url(' + post.imageURL + ')'
+      }">
+    <div class="jumbo-gradient-post col-md-8 px-0">
+      <strong class="d-inline-block mb-2" [ngClass]="post.category">{{ post.category }}</strong>
+      <div>
+        <bar-rating class="rating" [rate]="post.rating" [theme]="'default'" [readOnly]="true"></bar-rating>
+      </div>
+      <h1 class="display-4 font-italic text-white post-title">
+        <span>{{ post.title }}</span>
+      </h1>
+      <div class="mb-1 text-muted">{{ post.author }} | {{ post.date.toDate().toDateString() }}</div>
+    </div>
+  </div>
+  <div class="row" style="padding: 0 20px;">
+    <div class="body-text col-md-8 col-sm-12">{{post.body}}</div>
+    <div class="col-md-4 col-sm-12">
+      <div class="profile-content" *ngIf="post.author === 'Colt'">
+        <div class="profile-card">
+          <div class="firstinfo">
+            <img src="https://firebasestorage.googleapis.com/v0/b/reviews-7780d.appspot.com/o/pic%2Fprof.png?alt=media&token=d0f718f9-3b7b-4fb3-b0f6-2be574f617b6"
+            />
+            <div class="profileinfo">
+              <h1><a class="icons" href="/person/Colt">Colt Street</a></h1>
+              <h3>Web Developer</h3>
+              <p class="bio">A sports loving nerd with a passion for games, beer, and food.</p>
+              <div style="float: right;">
+                <a href="https://facebook.com/COLTstreet3" target="_blank">
+                  <i class="fab fa-facebook icons"></i>
+                </a>
+                <a href="http://instagram.com/instacoltstreet/" target="_blank">
+                  <i class="fab fa-instagram icons"></i>
+                </a>
+                <a href="https://twitter.com/COLTstreet" target="_blank">
+                  <i class="fab fa-twitter icons"></i>
+                </a>
+                <a href="https://github.com/COLTstreet" target="_blank">
+                  <i class="fab fa-github icons"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="profile-content" *ngIf="post.author === 'Carole'">
+        <div class="profile-card-c">
+          <div class="firstinfo">
+            <img src="https://firebasestorage.googleapis.com/v0/b/reviews-7780d.appspot.com/o/pic%2Fprof.png?alt=media&token=d0f718f9-3b7b-4fb3-b0f6-2be574f617b6"
+            />
+            <div class="profileinfo">
+              <h1><a class="icons" href="/person/Carole">Carole Harris</a></h1>
+              <h3 class="pink">Python Ninja</h3>
+              <p class="bio">Lived all my life on the top of mount Fuji, learning the way to be a Ninja Dev.</p>
+              <div style="float: right;">
+                <a href="https://facebook.com/profile.php?id=100000261250879" target="_blank">
+                  <i class="fab fa-facebook icons"></i>
+                </a>
+                <a href="http://instagram.com/caroleac/" target="_blank">
+                  <i class="fab fa-instagram icons"></i>
+                </a>
+                <a href="https://twitter.com/caroleACharris" target="_blank">
+                  <i class="fab fa-twitter icons"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="margin-top" *ngFor="let other of allPostCollectionList | async | slice:0:4">
+        <div *ngIf="other.id != post.id" class="jumbotron p-3 p-md-5 text-white rounded no-padding other-hero" [ngStyle]="{
+            'background': 'url(' + other.imageURL + ')',
+            'background-repeat': 'no-repeat',
+            'background-size': 'cover',
+            'background-position': 'center'
+            }">
+          <div class="jumbo-gradient-post col-md-12 px-0">
+            <h1 class="font-italic" style="border-top: 3px solid white;border-right: 3px solid white;">
+              <a href="post/{{other.category}}/{{other.id}}" class="text-white font-weight-bold other-title">{{ other.title }}</a>
+            </h1>
+            <div>
+              <bar-rating class="rating" [rate]="other.rating" [theme]="'default'" [readOnly]="true"></bar-rating>
+            </div>
+            <div class="mb-1 text-white">{{ other.author }} | {{ other.date.toDate().toDateString() }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

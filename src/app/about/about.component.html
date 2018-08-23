@@ -1,0 +1,45 @@
+<div class="header-container">
+  <div class="container">
+    <header class="blog-header py-3">
+      <div class="row flex-nowrap justify-content-between align-items-center">
+        <div class="col-4 d-flex justify-content-start align-items-center">
+          <div class="dropdown">
+            <a id="dLabel" class="btn btn-sm btn-light" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fas fa-bars fa-2x"></i>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="dLabel">
+              <a class="dropdown-item" href="/about">About</a>
+              <a class="dropdown-item" href="/person/Carole">Carole</a>
+              <a class="dropdown-item" href="/person/Colt">Colt</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-4 text-center">
+          <a href="/home">
+            <img src="assets/CCQC-logo.png" class="ccqc-logo">
+          </a>
+          <br>
+          <a class="cat-carat" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+            <i class="fas fa-caret-down fa-2x"></i>
+          </a>
+        </div>
+        <div class="col-4 d-flex justify-content-end align-items-center">
+          <!-- <a class="btn btn-sm btn-outline-secondary" href="/login">Login</a> -->
+        </div>
+      </div>
+    </header>
+  </div>
+</div>
+
+<div class="collapse container home-categories" id="collapseExample">
+  <div class="d-flex flex-wrap justify-content-center">
+    <a class="btn btn-sm btn-outline-secondary" (click)="filter('category', 'Restaurants')">Restaurants</a>
+    <a class="btn btn-sm btn-outline-secondary" (click)="filter('category', 'Brewery')">Brewery</a>
+    <a class="btn btn-sm btn-outline-secondary" (click)="filter('category', 'Bar')">Bar</a>
+    <a class="btn btn-sm btn-outline-secondary" (click)="filter('category', 'Nightlife')">Nightlife</a>
+    <a class="btn btn-sm btn-outline-secondary" (click)="filter('category', 'Fast-Casual-Eats')">Fast-Casual-Eats</a>
+    <a class="btn btn-sm btn-outline-secondary" (click)="filter('category', 'Sport-Recreatio')">Sport-Recreation</a>
+    <a class="btn btn-sm btn-outline-secondary" (click)="filter('category', 'Health-Fitness-Wellness')">Health-Fitness-Wellness</a>
+    <a class="btn btn-sm btn-outline-secondary" (click)="filter('category', 'All')">All</a>
+  </div>
+</div>

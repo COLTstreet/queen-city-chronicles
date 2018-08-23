@@ -1,0 +1,88 @@
+<div class="header-container">
+  <div class="container">
+    <header class="blog-header py-3">
+      <div class="row flex-nowrap justify-content-between align-items-center">
+        <div class="col-4 d-flex justify-content-start align-items-center">
+          <div class="dropdown">
+            <a id="dLabel" class="btn btn-sm btn-light" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fas fa-bars fa-2x"></i>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="dLabel">
+              <a class="dropdown-item" href="/about">About</a>
+              <a class="dropdown-item" href="/person/Carole">Carole</a>
+              <a class="dropdown-item" href="/person/Colt">Colt</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-4 text-center">
+          <a href="/home">
+            <img src="assets/CCQC-logo.png" class="ccqc-logo">
+          </a>
+          <br>
+          <a class="cat-carat" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+            <i (click)="showFilters = !showFilters" [ngClass]="showFilters ? 'fa-caret-down open' : 'fa-caret-down'" class="fas fa-2x"></i>
+          </a>
+        </div>
+        <div class="col-4 d-flex justify-content-end align-items-center">
+          <!-- <a class="btn btn-sm btn-outline-secondary" href="/login">Login</a> -->
+        </div>
+      </div>
+    </header>
+  </div>
+</div>
+
+<div class="collapse container home-categories" id="collapseExample" style="background: white;">
+  <div class="d-flex flex-wrap justify-content-center">
+    <button class="btn btn-sm btn-outline-secondary" (click)="filter('category', 'Restaurants')" title="Restaurants"><i class="fas fa-utensils"></i></button>
+    <button class="btn btn-sm btn-outline-secondary" (click)="filter('category', 'Brewery')" title="Brewery"><i class="fas fa-beer"></i></button>
+    <button class="btn btn-sm btn-outline-secondary" (click)="filter('category', 'Bar')" title="Bar"><i class="fas fa-glass-martini"></i></button>
+    <button class="btn btn-sm btn-outline-secondary" (click)="filter('category', 'Nightlife')" title="Nightlife"><i class="fas fa-moon"></i></button>
+    <button class="btn btn-sm btn-outline-secondary" (click)="filter('category', 'Fast-Casual-Eats')" title="Fast-Casual-Eats"><i class="fas fa-bolt"></i><i class="fas fa-utensil-spoon"></i></button>
+    <button class="btn btn-sm btn-outline-secondary" (click)="filter('category', 'Sport-Recreation')" title="Sport-Recreation"><i class="fas fa-basketball-ball"></i></button>
+    <button class="btn btn-sm btn-outline-secondary" (click)="filter('category', 'Health-Fitness-Wellness')" title="Health-Fitness-Wellness"><i class="fas fa-dumbbell"></i></button>
+    <button class="btn btn-sm btn-outline-secondary" (click)="filter('category', 'All')" title="All">All</button>
+  </div>
+</div>
+
+<div *ngIf="show" class="container" style="background: none;">
+  <div class="jumbotron p-3 p-md-5 text-white rounded no-padding card hero-bk" [ngStyle]="{
+    'background': 'url(' + featuredPost.imageURL + ')'
+    }">
+    <div class="jumbo-gradient col-md-10 px-0">
+      <strong class="d-inline-block mb-2" [ngClass]="featuredPost.category">{{ featuredPost.category }}</strong>
+      <div>
+        <bar-rating class="rating" [rate]="featuredPost.rating" [theme]="'default'" [readOnly]="true"></bar-rating>
+      </div>
+      <h1 class="display-4 font-italic">
+        <a href="post/{{featuredPost.category}}/{{featuredPost.id}}" class="text-white font-weight-bold">{{ featuredPost.title }}</a>
+      </h1>
+      <div class="mb-1 text-muted">{{ featuredPost.author }} | {{ featuredPost.date.toDate().toDateString() }}</div>
+      <p class="lead my-3">{{ featuredPost.lede }}</p>
+      <p class="lead mb-0">
+        <a href="post/{{featuredPost.category}}/{{featuredPost.id}}" class="text-white font-weight-bold">Read Story</a>
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-md-6" *ngFor="let post of postCollectionArray">
+      <div class="card flex-md-row mb-4 box-shadow h-md-250">
+        <div class="card-body d-flex flex-column align-items-start">
+          <strong class="d-inline-block mb-2" [ngClass]="post.category">{{ post.category }}</strong>
+          <div>
+            <bar-rating class="rating" [rate]="post.rating" [theme]="'default'" [readOnly]="true"></bar-rating>
+          </div>
+          <h3 class="mb-0">
+            <a class="text-dark" href="post/{{post.category}}/{{post.id}}">{{ post.title }}</a>
+          </h3>
+          <div class="mb-1 text-muted">{{ post.author }} | {{ post.date.toDate().toDateString() }}</div>
+          <p class="card-text mb-auto">{{ post.lede }}</p>
+          <a href="post/{{post.category}}/{{post.id}}">Read Story</a>
+        </div>
+        <div>
+          <img class="card-img-right flex-auto d-none d-md-block" src="{{post.imageURL}}">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

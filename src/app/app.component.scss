@@ -1,3 +1,127 @@
-$icon-font-path: "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/fonts/" !default;
-// Include Bootstrap styles
-@import "~bootstrap-sass/assets/stylesheets/_bootstrap";
+@import "~bootstrap/dist/css/bootstrap.css";
+
+body {
+  height: 100%;
+  width: 100%;
+  background-image: url('assets/full-bloom.png');
+  font-size: 18px;
+}
+
+.container {
+  background: rgba(255, 255, 255, .6);
+  padding: 0px;
+}
+
+.header-container {
+  background: white;
+  background-image: url('https://img.clipartxtras.com/feab5f7e03f34d33da6110b08a6e5746_charlotte-skyline-drawing_900-600.jpeg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 50%;
+  height: 145px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+  margin-bottom: 5px;
+}
+
+.no-padding {
+  padding: 0px !important;
+}
+
+.home-categories {
+  padding: 10px 0;
+}
+
+.cat-carat {
+  color: black;
+}
+
+.ccqc-logo {
+  height: 100px;
+}
+
+.error {
+  color: #FF9800;
+}
+
+.full-height {
+  height: 100%
+}
+
+.full-width {
+  width: 100%;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.margin-top-20 {
+  margin-top: 20px;
+}
+
+.right {
+  float: right;
+}
+
+.left {
+  float: left;
+}
+
+.btn-light {
+  background-color: white !important;
+  border-color: white !important;
+}
+
+.btn-light:hover {
+  color: #212529;
+  background-color: #e2e6ea !important;
+  border-color: #dae0e5 !important;
+}
+
+/*CATEGORIES*/
+
+.Restaurants {
+  color: #673AB7; //Purple
+}
+
+.Bar {
+  color: #2196F3; //Blue
+}
+
+.Brewery {
+  color: #795548; //Brown
+}
+
+.Nightlife {
+  color: #263238; //Black
+}
+
+.Fast-Casual-Eats {
+  color: #CDDC39; //Lime-Green
+}
+
+.Sport-Recreation {
+  color: #f44336; //Red
+}
+
+.Health-Fitness-Wellness {
+  color: #4CAF50; //Green
+}
+
+/*MEDIA QUERIES*/
+
+@media only screen and (max-width: 600px) {
+  .header-container {
+    background-position: top !important;
+    background-size: 80% !important;
+  }
+  .login-body {
+    background-position: bottom !important;
+    background-size: 100% !important;
+  }
+  .header-text {
+    text-align: left !important;
+    padding-left: 0px !important;
+  }
+}

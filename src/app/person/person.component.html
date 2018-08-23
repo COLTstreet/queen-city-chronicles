@@ -1,0 +1,82 @@
+<div class="person-container">
+  <div class="container">
+    <header class="blog-header py-3">
+      <div class="row flex-nowrap justify-content-between align-items-center">
+        <div class="col-4 d-flex justify-content-start align-items-center">
+          <div class="dropdown">
+            <a id="dLabel" class="btn btn-sm btn-light" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fas fa-bars fa-2x"></i>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="dLabel">
+              <a class="dropdown-item" href="/about">About</a>
+              <a class="dropdown-item" href="/person/Carole">Carole</a>
+              <a class="dropdown-item" href="/person/Colt">Colt</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-4 text-center">
+          <a href="/home">
+            <img src="assets/CCQC-logo.png" class="ccqc-logo">
+          </a>
+        </div>
+        <div class="col-4 d-flex justify-content-end align-items-center">
+          <!-- <a class="btn btn-sm btn-outline-secondary" href="/login">Login</a> -->
+        </div>
+      </div>
+    </header>
+  </div>
+</div>
+
+<div *ngIf="activePerson === 'Colt'">
+  <div class="row about-row">
+    <div class="col-md-6 col-sm-12 no-padding">
+      <img class="person-img" src="https://firebasestorage.googleapis.com/v0/b/reviews-7780d.appspot.com/o/pic%2Fme-3.png?alt=media&token=55988066-a477-48de-82e9-fd7b0c1aea98"
+      />
+    </div>
+    <div class="col-md-6 col-sm-12 about-text">
+      <h1>
+        <span>About Me</span>
+        <img class="dh-logo" src="assets/dh.png" />
+      </h1>
+      <p>What is up internet. My name is Colt Street. I am weird mixture of sports, video games, web development, movie references,
+        nerdiness, beer, and sour patch kids. My first love will always be basketball and I will play until the day
+        I die. I grew up in small town West Virginia where you basically knew everyone you went to school with. I went to
+        Texas out of college for a few years until I landed in Washington, D.C., where I met the perfect girl. I tricked her
+        into falling in love with me and it has been an amazing ride ever since. Now we have the most diva Mini Dachshund
+        ever and are living together in Charlotte!</p>
+      <p>And yes, that is the Deathly Hallows symbol.</p>
+      <p>I'm a wizard.</p>
+      <div class="personal-icons">
+        <a href="https://facebook.com/COLTstreet3" target="_blank">
+          <i class="fab fa-facebook green"></i>
+        </a>
+        <a href="http://instagram.com/instacoltstreet/" target="_blank">
+          <i class="fab fa-instagram green"></i>
+        </a>
+        <a href="https://twitter.com/COLTstreet" target="_blank">
+          <i class="fab fa-twitter green"></i>
+        </a>
+        <a href="https://github.com/COLTstreet" target="_blank">
+          <i class="fab fa-github green"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12 text-center margin-top-20">
+      <h1>{{ '{' }} Recent Posts by Me {{ '}' }}</h1>
+    </div>
+    <div class="col-12 col-md-4" *ngFor="let post of postCollectionList | async | slice:0:3">
+      <a href="post/{{post.category}}/{{post.id}}">
+        <div class="person-card">
+          <img class="flex-auto d-none d-md-block" src="{{post.imageURL}}">
+          <div class="person-text-block">
+            <h4>{{post.title}}</h4>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>
